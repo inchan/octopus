@@ -1,0 +1,164 @@
+[
+  {
+    "filePath": "tests/scenarios/history/e2e-tests.md",
+    "total": 58,
+    "high": 15,
+    "medium": 17,
+    "low": 24,
+    "byLayer": {
+      "E2E": 58
+    }
+  },
+  {
+    "filePath": "tests/scenarios/history/unit-tests.md",
+    "total": 53,
+    "high": 28,
+    "medium": 11,
+    "low": 14,
+    "byLayer": {
+      "Repository": 4,
+      "Service": 18,
+      "Handler": 6,
+      "Component": 17,
+      "Utility": 8
+    }
+  },
+  {
+    "filePath": "tests/scenarios/mcp/e2e-tests.md",
+    "total": 26,
+    "high": 16,
+    "medium": 8,
+    "low": 2,
+    "byLayer": {
+      "E2E": 26
+    }
+  },
+  {
+    "filePath": "tests/scenarios/mcp/unit-tests.md",
+    "total": 20,
+    "high": 20,
+    "medium": 0,
+    "low": 0,
+    "byLayer": {
+      "Repository": 7,
+      "Service": 3,
+      "Handler": 3,
+      "Hook": 2,
+      "Utility": 2,
+      "Component": 3
+    }
+  },
+  {
+    "filePath": "tests/scenarios/projects/e2e-tests.md",
+    "total": 36,
+    "high": 16,
+    "medium": 13,
+    "low": 7,
+    "byLayer": {
+      "E2E": 36
+    }
+  },
+  {
+    "filePath": "tests/scenarios/projects/unit-tests.md",
+    "total": 57,
+    "high": 38,
+    "medium": 15,
+    "low": 4,
+    "byLayer": {
+      "Repository": 8,
+      "Service": 19,
+      "Handler": 12,
+      "Component": 18
+    }
+  },
+  {
+    "filePath": "tests/scenarios/rules/e2e-tests.md",
+    "total": 63,
+    "high": 26,
+    "medium": 26,
+    "low": 11,
+    "byLayer": {
+      "E2E": 63
+    }
+  },
+  {
+    "filePath": "tests/scenarios/rules/unit-tests.md",
+    "total": 96,
+    "high": 57,
+    "medium": 33,
+    "low": 6,
+    "byLayer": {
+      "Repository": 13,
+      "Handler": 9,
+      "Hook": 14,
+      "Component": 49,
+      "Utility": 8,
+      "Service": 3
+    }
+  },
+  {
+    "filePath": "tests/scenarios/settings/e2e-tests.md",
+    "total": 50,
+    "high": 25,
+    "medium": 12,
+    "low": 13,
+    "byLayer": {
+      "E2E": 50
+    }
+  },
+  {
+    "filePath": "tests/scenarios/settings/unit-tests.md",
+    "total": 28,
+    "high": 16,
+    "medium": 9,
+    "low": 3,
+    "byLayer": {
+      "Service": 28
+    }
+  },
+  {
+    "filePath": "tests/scenarios/sync/e2e-tests.md",
+    "total": 38,
+    "high": 16,
+    "medium": 15,
+    "low": 7,
+    "byLayer": {
+      "E2E": 38
+    }
+  },
+  {
+    "filePath": "tests/scenarios/sync/unit-tests.md",
+    "total": 36,
+    "high": 17,
+    "medium": 14,
+    "low": 5,
+    "byLayer": {
+      "Service": 23,
+      "Utility": 8,
+      "Handler": 5
+    }
+  },
+  {
+    "filePath": "tests/scenarios/tools/e2e-tests.md",
+    "total": 50,
+    "high": 14,
+    "medium": 22,
+    "low": 14,
+    "byLayer": {
+      "E2E": 50
+    }
+  },
+  {
+    "filePath": "tests/scenarios/tools/unit-tests.md",
+    "total": 68,
+    "high": 32,
+    "medium": 21,
+    "low": 15,
+    "byLayer": {
+      "Repository": 10,
+      "Service": 20,
+      "Handler": 8,
+      "Component": 30
+    }
+  }
+]

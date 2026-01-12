@@ -1,0 +1,88 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: Align Agents
+      - text: v2.0 Beta
+    - generic [ref=e10]:
+      - generic [ref=e11]: Platform
+      - button "Tools" [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+        - generic [ref=e18]: Tools
+      - button "Sync" [active] [ref=e19] [cursor=pointer]:
+        - img [ref=e20]
+        - generic [ref=e25]: Sync
+      - button "Rule Sets" [ref=e26] [cursor=pointer]:
+        - img [ref=e27]
+        - generic [ref=e30]: Rule Sets
+      - button "MCP Sets" [ref=e31] [cursor=pointer]:
+        - img [ref=e32]
+        - generic [ref=e35]: MCP Sets
+    - generic [ref=e36]:
+      - generic [ref=e37]: Workspace
+      - button "Projects" [ref=e38] [cursor=pointer]:
+        - img [ref=e39]
+        - generic [ref=e41]: Projects
+      - button "History" [ref=e42] [cursor=pointer]:
+        - img [ref=e43]
+        - generic [ref=e47]: History
+    - button "Settings" [ref=e49] [cursor=pointer]:
+      - img [ref=e50]
+      - generic [ref=e53]: Settings
+  - main [ref=e54]:
+    - generic [ref=e56]:
+      - generic [ref=e57] [cursor=pointer]: Dashboard
+      - generic [ref=e58]: /
+      - generic [ref=e59]: Tools
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]: No installed tools detected.
+        - generic [ref=e64]: Please check if AI tools (Cursor, VS Code, Claude, etc.) are installed in /Applications or available in your PATH.
+        - button "Retry Detection" [ref=e65] [cursor=pointer]
+      - generic [ref=e66]:
+        - heading "Sync Configuration" [level=1] [ref=e67]
+        - paragraph [ref=e68]: Configure synchronization scope strategy.
+      - generic [ref=e70]:
+        - generic [ref=e73]:
+          - heading "1. Target Tools" [level=3] [ref=e76]
+          - generic [ref=e80]:
+            - button "All Tools 0" [ref=e81] [cursor=pointer]:
+              - generic [ref=e82]:
+                - generic [ref=e83]: All Tools
+                - generic [ref=e84]: "0"
+            - button "CLI Tools 0" [ref=e85] [cursor=pointer]:
+              - generic [ref=e86]:
+                - generic [ref=e87]: CLI Tools
+                - generic [ref=e88]: "0"
+            - button "IDE Tools 0" [ref=e89] [cursor=pointer]:
+              - generic [ref=e90]:
+                - generic [ref=e91]: IDE Tools
+                - generic [ref=e92]: "0"
+        - separator [ref=e93]:
+          - img [ref=e95]
+        - generic [ref=e104]:
+          - heading "2. Rules" [level=3] [ref=e107]
+          - generic [ref=e111]:
+            - button "None" [ref=e112] [cursor=pointer]:
+              - generic [ref=e114]: None
+            - button "My Rules" [ref=e115] [cursor=pointer]:
+              - generic [ref=e117]: My Rules
+        - separator [ref=e118]:
+          - img [ref=e120]
+        - generic [ref=e129]:
+          - heading "3. MCP Servers" [level=3] [ref=e132]
+          - generic [ref=e136]:
+            - button "None" [ref=e137] [cursor=pointer]:
+              - generic [ref=e139]: None
+            - button "My MCPs" [ref=e140] [cursor=pointer]:
+              - generic [ref=e142]: My MCPs
+      - generic [ref=e143]:
+        - generic [ref=e144]:
+          - img [ref=e145]
+          - generic [ref=e148]: Auto-backup active
+        - button "Start Sync" [disabled]:
+          - img
+          - text: Start Sync
+```
