@@ -25,3 +25,14 @@ dist-ssr
 
 # Build outputs
 release/
+dist-electron/
+generated/
+
+# Test artifacts
+playwright-report/
+test-results/
+
+# TypeScript build cache
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
