@@ -1,6 +1,6 @@
 # Migration Protocol: v1 to v2 (Electron)
 
-이 문서는 align-agents v2 (Electron 버전) 개발을 위한 작업 방식(Protocol)을 정의합니다.
+이 문서는 octopus v2 (Electron 버전) 개발을 위한 작업 방식(Protocol)을 정의합니다.
 
 ## 1. 문서화 전략 (Where to write)
 

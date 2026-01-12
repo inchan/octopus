@@ -2,7 +2,7 @@
 
 ## Overview
 
-Align Agents v2 프로젝트의 테스트 시나리오 문서입니다.
+Octopus 프로젝트의 테스트 시나리오 문서입니다.
 
 ### Summary
 

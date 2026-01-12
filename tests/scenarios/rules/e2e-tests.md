@@ -49,7 +49,7 @@
 | E2E | 63 | ██████████ 100% |
 
 ## Overview
-This document describes end-to-end test scenarios for the Rules feature in Align Agents v2. These tests verify the complete user workflows across the 3-Pane layout (Rule Sets, Set Detail, Rule Pool) from the browser's perspective.
+This document describes end-to-end test scenarios for the Rules feature in Octopus. These tests verify the complete user workflows across the 3-Pane layout (Rule Sets, Set Detail, Rule Pool) from the browser's perspective.
 
 **Testing Principles:**
 - No `waitForTimeout()` - use condition-based waits only

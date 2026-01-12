@@ -1,85 +1,62 @@
-# React + TypeScript + Vite
+# Octopus 🐙
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Centralized AI Tool Configuration Manager**
 
-Currently, two official plugins are available:
+Octopus is an Electron-based desktop application that synchronizes Rules and MCP server configurations across multiple AI coding tools.
 
-# Align Agents v2
+## Supported Tools
 
-**[Start Here: 프로젝트 마스터 가이드 (Project Constitution)](doc/GUIDE.md)**
+| Tool | Rules | MCP |
+|------|:-----:|:---:|
+| Claude Desktop | ✅ | ✅ |
+| Claude Code | ✅ | ✅ |
+| VS Code | - | ✅ |
+| Cursor | ✅ | ✅ |
+| Windsurf | ✅ | ✅ |
+| Cline | ✅ | ✅ |
+| Codex CLI | ✅ | ✅ |
+| Gemini CLI | ✅ | ✅ |
+| Qwen Code | ✅ | ✅ |
+| OpenCode | - | ✅ |
 
-Align Agents v2는 Electron 기반의 프리미엄 AI 도구 관리 데스크탑 애플리케이션입니다.
-Clean Architecture, SOLID 원칙, 그리고 TDD를 기반으로 개발되고 있습니다.
+## Features
 
-## 문서 및 가이드
-이 프로젝트는 철저한 문서화 중심 개발(Documentation-Driven Development)을 따릅니다.
-모든 개발자와 에이전트는 작업을 시작하기 전에 **[마스터 가이드](doc/GUIDE.md)**를 숙지해야 합니다.
+- **Central Management**: Manage all your AI tool configurations in one place
+- **One-Click Sync**: Push settings to multiple tools simultaneously
+- **Adaptive Sync**: Automatically optimizes settings per tool (e.g., Serena MCP context)
+- **Rule Sets**: Organize and group your system prompts/rules
+- **MCP Server Management**: Centralized MCP server configuration
 
-- **[Core Principles](doc/core/01_PRINCIPLES.md)**: 핵심 원칙
-- **[Project Structure](doc/core/02_STRUCTURE.md)**: 아키텍처 구조
-- **[Workflow](doc/core/03_WORKFLOW.md)**: 개발 절차
+## Quick Start
 
-## React Compiler
+```bash
+# Install dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Development
+npm run dev
 
-## Expanding the ESLint configuration
+# Build
+npm run build
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Test
+npm run test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend**: React 19, TailwindCSS, TanStack Query, Radix UI
+- **Backend**: Electron, better-sqlite3
+- **Testing**: Vitest (unit), Playwright (E2E)
+- **Build**: Vite, electron-builder
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Documentation
+
+- [Master Guide](doc/GUIDE.md) - Start here
+- [Core Principles](doc/core/01_PRINCIPLES.md)
+- [Project Structure](doc/core/02_STRUCTURE.md)
+- [Development Workflow](doc/core/03_WORKFLOW.md)
+
+## License
+
+MIT

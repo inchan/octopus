@@ -8,7 +8,7 @@
 
 ## Overview
 
-이 문서는 Align Agents v2 애플리케이션의 모든 페이지와 컴포넌트에 적용되는 접근성(Accessibility) 공통 테스트 시나리오를 정의합니다. WCAG 2.1 Level AA 기준을 준수합니다.
+이 문서는 Octopus 애플리케이션의 모든 페이지와 컴포넌트에 적용되는 접근성(Accessibility) 공통 테스트 시나리오를 정의합니다. WCAG 2.1 Level AA 기준을 준수합니다.
 
 ### 적용 범위
 

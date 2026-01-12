@@ -2,7 +2,7 @@
 
 ## 1. 개요 (Overview)
 본 문서는 주요 AI 코딩 도구(IDE 및 Desktop App)별 **Rule(지침)**과 **MCP(Context & Tools)** 설정의 지원 범위(Global, Project, Local)와 설정 파일 위치를 조사한 결과입니다.
-프로젝트 `align-agents-v2`에서 각 도구에 맞는 설정을 자동화하거나 가이드하기 위한 기초 자료로 활용됩니다.
+프로젝트 `octopus`에서 각 도구에 맞는 설정을 자동화하거나 가이드하기 위한 기초 자료로 활용됩니다.
 
 ## 2. 도구별 설정 분석 (Analysis by Tool)
 
@@ -52,7 +52,7 @@ Extension 기반이므로 VS Code의 설정 체계를 따르거나 독자적인 
 
 ## 3. 통합 전략 제안 (Integration Strategy)
 
-우리 프로젝트(`align-agents-v2`)에서 이 지원 사항들을 녹여내기 위한 전략입니다.
+우리 프로젝트(`octopus`)에서 이 지원 사항들을 녹여내기 위한 전략입니다.
 
 ### 3.1 설정 우선순위 대원칙
 1. **Rule**: **Project Scope**를 최우선으로 생성합니다. (협업 및 프로젝트 일관성)

@@ -1,12 +1,12 @@
 {
-  "name": "align-agents-v2",
+  "name": "octopus",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist-electron/main.js",
   "build": {
-    "appId": "com.align-agents.v2",
-    "productName": "Align Agents",
+    "appId": "com.octopus.app",
+    "productName": "Octopus",
     "directories": {
       "output": "release/${version}"
     },

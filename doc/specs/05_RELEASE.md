@@ -1,7 +1,7 @@
 # Phase 5: 릴리스 엔지니어링 및 폴리싱
 
 ## 1. 목표
-보안, 안정성, 빌드 자동화에 중점을 두어 `align-agents-v2`를 프로덕션 배포 가능한 상태로 준비합니다.
+보안, 안정성, 빌드 자동화에 중점을 두어 `Octopus`를 프로덕션 배포 가능한 상태로 준비합니다.
 
 ## 2. 보안 (Security)
 ### 콘텐츠 보안 정책 (Content Security Policy, CSP)
@@ -22,8 +22,8 @@ XSS 및 승인되지 않은 리소스 로딩을 방지하기 위한 엄격한 CS
 
 ## 4. 빌드 구성 (Build Configuration)
 - 타겟: macOS (`dmg`, `zip`).
-- App ID: `com.align-agents.v2`
-- 제품명: `Align Agents`
+- App ID: `com.octopus.app`
+- 제품명: `Octopus`
 
 ## 5. CI/CD
 - GitHub Actions 워크플로우: `main` 브랜치 푸시 시 빌드 및 테스트 수행.

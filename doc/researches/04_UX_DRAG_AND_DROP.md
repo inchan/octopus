@@ -3,7 +3,7 @@ Date: 2025-12-20
 Status: Draft
 
 ## 1. Objective
-Analyze best practices for "Reordering Lists" in modern desktop applications (Electron/Web) to determine the optimal interaction model for Align Agents v2, specifically evaluating the "Long Press" pattern versus standard alternatives.
+Analyze best practices for "Reordering Lists" in modern desktop applications (Electron/Web) to determine the optimal interaction model for Octopus, specifically evaluating the "Long Press" pattern versus standard alternatives.
 
 ## 2. Benchmark Analysis
 
@@ -43,7 +43,7 @@ Analyze best practices for "Reordering Lists" in modern desktop applications (El
     *   **Friction**: The 200-500ms delay feels "sluggish" for power users compared to instant handles.
     *   **Text Selection Conflict**: Users trying to select text might trigger drag if implementation is naive.
 
-## 3. Heuristic Evaluation for Align Agents v2
+## 3. Heuristic Evaluation for Octopus
 
 User Requirement: "Clean Design", "Premium Feel", "No Drag Icon".
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Align Agents v2는 Electron 기반 AI 도구 관리 데스크탑 애플리케이션입니다. Clean Architecture, SOLID 원칙, TDD 기반으로 개발됩니다.
+Octopus는 Electron 기반 AI 도구 설정 동기화 데스크탑 애플리케이션입니다. 여러 AI 코딩 도구들의 Rules와 MCP 서버 설정을 중앙에서 관리하고 동기화합니다.
 
 **필수 문서**: 작업 전 [마스터 가이드](doc/GUIDE.md)를 숙지해야 합니다.
 

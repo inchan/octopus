@@ -3,7 +3,7 @@
 **Status**: Ready for Implementation
 **Phase**: Phase 1
 
-This document defines the technical foundation for `align-agents` v2, incorporating 2025 industry best practices for Electron/React.
+This document defines the technical foundation for `octopus` v2, incorporating 2025 industry best practices for Electron/React.
 
 ## 1. Core Architecture Principles
 Based on "Clean Architecture for Electron" best practices:
@@ -24,7 +24,7 @@ Based on "Clean Architecture for Electron" best practices:
 ## 3. Detailed Directory Structure
 
 ```
-align-agents-v2/
+octopus/
 ├── electron/                 # [Infrastructure Layer]
 │   ├── main.ts              # Entry Point
 │   ├── preload.ts           # The "Anti-Corruption Layer" (Bridge)

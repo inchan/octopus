@@ -52,7 +52,7 @@
 **Description**: Claude Desktop 형식의 config 파일을 import하는 전체 워크플로우 E2E 테스트
 
 **Preconditions**:
-- Align Agents 앱 실행됨
+- Octopus 앱 실행됨
 - MCP 메뉴로 이동됨
 - 테스트용 Claude Desktop config 파일 준비
 

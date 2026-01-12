@@ -3,7 +3,7 @@
 **Date**: 2025-12-17
 **Status**: Proposed
 
-이 문서는 `align-agents-v2` (Electron + Vite + React + Clean Architecture) 프로젝트를 위한 최적의 테스트 전략을 정의합니다.
+이 문서는 `octopus` (Electron + Vite + React + Clean Architecture) 프로젝트를 위한 최적의 테스트 전략을 정의합니다.
 
 ## 1. Executive Summary
 

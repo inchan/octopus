@@ -244,7 +244,7 @@
 
 ## Completion Summary
 
-모든 8개의 테스트 시나리오가 `/Users/chans/workspace/pilot/align-agents-v2/tests/scenarios/mcp/unit-tests.md`에 성공적으로 추가되었습니다.
+모든 8개의 테스트 시나리오가 `/Users/chans/workspace/pilot/octopus/tests/scenarios/mcp/unit-tests.md`에 성공적으로 추가되었습니다.
 
 - 추가된 시나리오: TC-MCP-U-CP001 ~ TC-MCP-U-CP008
 - 총 시나리오 수: 26개 (기존 20개 - 중복 2개 + 신규 8개)
