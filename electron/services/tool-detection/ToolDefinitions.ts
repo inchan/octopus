@@ -53,6 +53,14 @@ export const SUPPORTED_TOOLS: ToolDefinition[] = [
             cliCommand: 'opencode'
         }
     },
+    {
+        id: 'rovo-dev',
+        name: 'Rovo Dev',
+        type: 'cli',
+        detection: {
+            cliCommand: 'acli'
+        }
+    },
 
     // --- IDEs ---
     {

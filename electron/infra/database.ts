@@ -16,7 +16,7 @@ export class DatabaseService {
             dbPath = customPath;
         } else {
             const userDataPath = app.getPath('userData');
-            dbPath = path.join(userDataPath, 'align-agents-v2.db');
+            dbPath = path.join(userDataPath, 'octopus.db');
 
             // Ensure directory exists
             const dbDir = path.dirname(dbPath);

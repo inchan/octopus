@@ -49,6 +49,7 @@ import { StubGenerator } from './services/tool-integration/StubGenerator';
 import { GenericCLIGenerator } from './services/tool-integration/GenericCLIGenerator';
 import { VSCodeGenerator } from './services/tool-integration/VSCodeGenerator';
 import { OpenCodeGenerator } from './services/tool-integration/OpenCodeGenerator';
+import { RovoDevGenerator } from './services/tool-integration/RovoDevGenerator';
 
 // Shared
 import { IMcpAPI } from '../shared/api';
@@ -143,6 +144,9 @@ const toolIntegrationService = new ToolIntegrationService([
 
     // OpenCode - 전용 Generator (MCP 형식이 다름)
     { tool: 'OpenCode', generator: new OpenCodeGenerator() },
+
+    // Rovo Dev - 전용 Generator (YAML Rules + JSON MCP)
+    { tool: 'Rovo Dev', generator: new RovoDevGenerator() },
 
     // VS Code support
     { tool: 'VS Code', generator: new VSCodeGenerator() },
