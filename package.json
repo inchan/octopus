@@ -53,7 +53,7 @@
     "predev": "electron-rebuild -f -w better-sqlite3",
     "dev": "vite",
     "prebuild": "electron-rebuild -f -w better-sqlite3",
-    "build": "tsc -b && vite build && electron-builder",
+    "build": "npm run icons:generate && npm run icons:ico && tsc -b && vite build && electron-builder",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",

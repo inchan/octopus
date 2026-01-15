@@ -88,9 +88,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEBUG: electron-builder
-          # Code signing is skipped if these are not provided
-          CSC_LINK: ${{ secrets.CSC_LINK || '' }}
-          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD || '' }}
+          # Disable code signing when certificates are not available
+          # CSC_IDENTITY_AUTO_DISCOVERY=false prevents electron-builder from
+          # trying to auto-discover signing identity on macOS
+          CSC_IDENTITY_AUTO_DISCOVERY: ${{ secrets.CSC_LINK && 'true' || 'false' }}
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
 
       - name: Upload artifacts (macOS)
         if: matrix.os == 'macos-latest'

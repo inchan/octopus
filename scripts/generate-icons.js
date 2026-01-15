@@ -11,7 +11,11 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 import sharp from 'sharp';
+
+const execAsync = promisify(exec);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -118,7 +122,18 @@ async function generateMacIcons() {
   }
   
   console.log('✓ Generated iconset directory');
-  console.log('  Run on macOS: iconutil -c icns build/icons/icon.iconset');
+
+  if (process.platform === 'darwin') {
+    try {
+      console.log('  Executing iconutil...');
+      await execAsync(`iconutil -c icns "${iconsetDir}" -o "${join(iconsDir, 'icon.icns')}"`);
+      console.log('✓ Generated icon.icns');
+    } catch (error) {
+      console.error('⚠ Failed to run iconutil:', error.message);
+    }
+  } else {
+    console.log('  Run on macOS: iconutil -c icns build/icons/icon.iconset');
+  }
 }
 
 async function generateWindowsIcon() {
