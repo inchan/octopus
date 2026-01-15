@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.4] - 2026-01-15
+## [0.0.5] - 2026-01-15
 
 ### Added
 - **macOS Distribution:** Re-configured the app for "Unidentified Developer" distribution. This resolves the persistent "Damaged App" error by allowing users to open the app via the standard macOS security workaround (Right-click > Open).
