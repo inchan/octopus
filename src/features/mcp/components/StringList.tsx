@@ -201,5 +201,3 @@ export function StringList({
         </div>
     );
 }
-
-export default StringList;

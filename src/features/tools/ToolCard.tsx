@@ -67,7 +67,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onConfigure }) => {
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <div className="truncate flex items-center cursor-help">
+                                    <div className="min-w-0 truncate flex items-center cursor-help">
                                         <span className="text-zinc-600 mr-2 w-10 inline-block select-none">PATH</span>
                                         <span className="text-zinc-300 truncate">{tool.paths.app.split('/').pop()}</span>
                                     </div>
@@ -82,7 +82,7 @@ export const ToolCard: React.FC<ToolCardProps> = ({ tool, onConfigure }) => {
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger asChild>
-                                    <div className="truncate flex items-center cursor-help">
+                                    <div className="min-w-0 truncate flex items-center cursor-help">
                                         <span className="text-zinc-600 mr-2 w-10 inline-block select-none">CFG</span>
                                         <span className="text-zinc-300 truncate">{tool.paths.config.split('/').pop()}</span>
                                     </div>

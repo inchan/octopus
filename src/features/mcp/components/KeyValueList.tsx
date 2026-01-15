@@ -117,5 +117,3 @@ export function KeyValueList({
         </div>
     );
 }
-
-export default KeyValueList;
