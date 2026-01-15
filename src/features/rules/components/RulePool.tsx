@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Rule, RuleSet } from '@shared/types';
+import { TESTID, testId } from '@shared/test-ids';
 import { Search, Plus, Loader2, Filter, MoreHorizontal, Edit2, Trash2, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -95,7 +96,7 @@ function SortableRulePoolItem({
                     "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50",
                     isDragging && "opacity-50 bg-zinc-800/50 scale-[1.02] shadow-xl ring-1 ring-zinc-700"
                 )}
-                data-testid={`rules-pool-item-${rule.id}`}
+                data-testid={testId.rulesPoolItem(rule.id)}
                 onClick={() => onEditRule(rule)}
             >
                 {/* Left: Add Action */}
@@ -124,16 +125,16 @@ function SortableRulePoolItem({
                             <div
                                 className="h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"
                                 title="Active"
-                                data-testid={`rules-pool-item-${rule.id}-status-active`}
+                                data-testid={testId.rulesPoolItemStatusActive(rule.id)}
                             />
                         ) : (
                             <div
                                 className="h-1.5 w-1.5 rounded-full bg-zinc-600 shrink-0 border border-zinc-500"
                                 title="Inactive"
-                                data-testid={`rules-pool-item-${rule.id}-status-inactive`}
+                                data-testid={testId.rulesPoolItemStatusInactive(rule.id)}
                             />
                         )}
-                        <div data-testid={`rules-pool-item-${rule.id}-name`} className="text-sm font-medium truncate text-zinc-300">
+                        <div data-testid={`${testId.rulesPoolItem(rule.id)}-name`} className="text-sm font-medium truncate text-zinc-300">
                             {rule.name}
                         </div>
                     </div>
@@ -151,7 +152,7 @@ function SortableRulePoolItem({
                                 variant="ghost"
                                 className="h-6 w-6 text-zinc-500 hover:text-zinc-200"
                                 onClick={(e) => e.stopPropagation()}
-                                data-testid={`rules-pool-item-${rule.id}-more`}
+                                data-testid={testId.rulesPoolItemMore(rule.id)}
                             >
                                 <MoreHorizontal className="h-4 w-4" />
                             </Button>
@@ -163,7 +164,7 @@ function SortableRulePoolItem({
                                     size="sm"
                                     className="h-8 justify-start px-2 text-xs font-normal relative"
                                     onClick={() => onEditRule(rule)}
-                                    data-testid={`rules-pool-item-${rule.id}-edit`}
+                                    data-testid={testId.rulesPoolItemEdit(rule.id)}
                                 >
                                     <Edit2 className="mr-2 h-3.5 w-3.5 text-zinc-500" />
                                     Edit
@@ -174,7 +175,7 @@ function SortableRulePoolItem({
                                     size="sm"
                                     className="h-8 justify-start px-2 text-xs font-normal text-destructive hover:text-destructive hover:bg-destructive/10"
                                     onClick={() => onDeleteRule(rule.id)}
-                                    data-testid={`rules-pool-item-${rule.id}-delete`}
+                                    data-testid={testId.rulesPoolItemDelete(rule.id)}
                                 >
                                     <Trash2 className="mr-2 h-3.5 w-3.5" />
                                     Delete
@@ -238,11 +239,11 @@ export function RulePool({
 
     return (
         <ContentColumn
-            testId="rules-pool"
+            testId={TESTID.RULES.POOL}
             title={
                 <div className="flex items-center justify-between w-full h-7">
                     <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                        Rule Pool <span data-testid="rules-pool-count" className="ml-1 opacity-70">({filteredRules.length})</span>
+                        Rule Pool <span data-testid={TESTID.RULES.POOL_COUNT} className="ml-1 opacity-70">({filteredRules.length})</span>
                     </h3>
 
                     <div className="flex items-center gap-1">
@@ -270,7 +271,7 @@ export function RulePool({
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <Button
-                                        data-testid="rules-import-button"
+                                        data-testid={TESTID.RULES.POOL_IMPORT_BUTTON}
                                         size="sm"
                                         variant="ghost"
                                         className="h-7 w-7 p-0 hover:bg-zinc-800"
@@ -289,7 +290,7 @@ export function RulePool({
                             <Tooltip>
                                 <TooltipTrigger asChild>
                                     <Button
-                                        data-testid="rules-pool-new-button"
+                                        data-testid={TESTID.RULES.POOL_NEW_BUTTON}
                                         size="sm"
                                         variant="ghost"
                                         className="h-7 w-7 p-0 hover:bg-zinc-800"

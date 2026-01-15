@@ -7,6 +7,19 @@ export interface ParseSingleResult {
     error?: string;
 }
 
+interface McpServerConfig {
+    name?: string;
+    command?: string;
+    args?: string[];
+    env?: Record<string, string>;
+    url?: string;
+}
+
+interface McpServersConfig {
+    mcpServers?: Record<string, McpServerConfig>;
+    [key: string]: unknown;
+}
+
 export function parseSingleServerConfig(input: string): ParseSingleResult {
     if (!input.trim()) {
         return { success: true, data: undefined };
@@ -30,7 +43,7 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
 
     // Heuristic: If it looks like "some-key": { ... }, and not wrapped in {}, wrap it.
     try {
-        let parsed: Record<string, unknown>;
+        let parsed: unknown;
         try {
             parsed = JSON.parse(cleaned);
         } catch (e) {
@@ -41,7 +54,7 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
                 try {
                     const wrapped = `{${cleaned}}`;
                     parsed = JSON.parse(wrapped);
-                } catch (_e2) {
+                } catch {
                     throw e;
                 }
             } else {
@@ -53,30 +66,38 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
             throw new Error('Root must be an object');
         }
 
-        let target: any = parsed;
+        let target: McpServerConfig | undefined;
+        const typedParsed = parsed as McpServersConfig;
 
         // Logic to extract the "best" server config from the object
         // 1. If it has mcpServers key, look inside.
-        if (parsed.mcpServers && typeof parsed.mcpServers === 'object') {
-            const mcpServers = parsed.mcpServers as Record<string, any>;
+        if (typedParsed.mcpServers && typeof typedParsed.mcpServers === 'object') {
+            const mcpServers = typedParsed.mcpServers;
             const keys = Object.keys(mcpServers);
             if (keys.length > 0) {
                 target = mcpServers[keys[0]];
-                if (!target.name) {
+                if (target && !target.name) {
                     target.name = keys[0];
                 }
             }
         }
         // 2. If it is NOT a direct command object (no 'command' key), but has keys that are objects?
-        else if (!(parsed as Record<string, any>).command && !(parsed as Record<string, any>).name && Object.keys(parsed).length > 0) {
-            const keys = Object.keys(parsed);
-            const firstVal = (parsed as Record<string, any>)[keys[0]];
+        else if (!(typedParsed as McpServerConfig).command && !(typedParsed as McpServerConfig).name && Object.keys(typedParsed).length > 0) {
+            const keys = Object.keys(typedParsed);
+            const firstVal = (typedParsed as Record<string, unknown>)[keys[0]];
             if (firstVal && typeof firstVal === 'object' && !Array.isArray(firstVal)) {
-                if ((firstVal as Record<string, any>).command) {
-                    target = firstVal;
+                if ((firstVal as McpServerConfig).command) {
+                    target = firstVal as McpServerConfig;
                     if (!target.name) target.name = keys[0];
                 }
             }
+        } else {
+            // Assume it's a direct config
+            target = typedParsed as McpServerConfig;
+        }
+
+        if (!target) {
+             throw new Error('Could not identify server configuration');
         }
 
         return {
@@ -115,9 +136,9 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
                 // We wrap it to be valid json if keys are quoted.
                 // But relaxJson handles comments and loose quotes.
                 const relaxed = relaxJson(block);
-                const parsed = JSON.parse(relaxed);
+                const parsed = JSON.parse(relaxed) as Record<string, McpServerConfig>;
 
-                Object.entries(parsed).forEach(([key, val]: [string, any]) => {
+                Object.entries(parsed).forEach(([key, val]) => {
                     if (val && typeof val === 'object' && val.command) {
                         const server: CreateMcpServerParams = {
                             name: val.name || key,
@@ -133,7 +154,7 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
                         }
                     }
                 });
-            } catch (_e) {
+            } catch {
                 // ignore
             }
         }
@@ -180,9 +201,9 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
             // Maybe it contains mcpServers key?
             try {
                 const relaxed = relaxJson(code);
-                const parsed = JSON.parse(relaxed) as Record<string, any>;
+                const parsed = JSON.parse(relaxed) as McpServersConfig;
                 if (parsed.mcpServers) {
-                    Object.entries(parsed.mcpServers).forEach(([key, val]: [string, any]) => {
+                    Object.entries(parsed.mcpServers).forEach(([key, val]) => {
                         if (val && typeof val === 'object' && val.command) {
                             const server: CreateMcpServerParams = {
                                 name: val.name || key,
@@ -199,7 +220,7 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
                         }
                     });
                 }
-            } catch (_e) {
+            } catch {
                 // Ignore parsing errors for individual blocks
             }
         }

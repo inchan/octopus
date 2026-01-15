@@ -162,3 +162,7 @@ export interface SettingsSchema {
     anthropicKey?: string;
 }
 
+import { UpdateInfo, ProgressInfo } from 'electron-updater';
+
+export type { UpdateInfo, ProgressInfo };
+

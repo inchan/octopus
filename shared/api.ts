@@ -10,7 +10,7 @@ import {
     Project, CreateProjectParams, UpdateProjectParams,
     ToolConfig, SetToolConfigParams,
     SyncResult, SyncPreviewData, DiffResult,
-    SettingsSchema
+    SettingsSchema, UpdateInfo, ProgressInfo
 } from './types';
 
 export type {
@@ -20,6 +20,7 @@ export type {
     Project, ToolConfig,
     SyncResult, SyncPreviewData, DiffResult,
     SettingsSchema,
+    UpdateInfo, ProgressInfo,
     // Params types for mocks/api.ts
     CreateRuleParams, UpdateRuleParams,
     CreateMcpServerParams, UpdateMcpServerParams,
@@ -124,9 +125,9 @@ export interface IUpdaterAPI {
     checkForUpdates(): Promise<void>;
     installUpdate(): Promise<void>;
     openDownloadPage(): Promise<void>;
-    onUpdateAvailable(callback: (info: any) => void): void;
-    onUpdateProgress(callback: (progress: any) => void): void;
-    onUpdateDownloaded(callback: (info: any) => void): void;
+    onUpdateAvailable(callback: (info: UpdateInfo) => void): void;
+    onUpdateProgress(callback: (progress: ProgressInfo) => void): void;
+    onUpdateDownloaded(callback: (info: UpdateInfo) => void): void;
     onUpdateError(callback: (error: string) => void): void;
     removeListeners(): void;
 }

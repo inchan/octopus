@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { RuleSet, CreateRuleSetParams } from '@shared/types';
+import { TESTID, testId } from '@shared/test-ids';
 import { Loader2, Plus, FolderOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -82,7 +83,7 @@ function SortableRuleSetItem({
                     >
                         <Button
                             variant="ghost"
-                            data-testid={`rules-set-item-${set.id}`}
+                            data-testid={testId.rulesSetItem(set.id)}
                             onClick={() => onSelectSet(set.id)}
                             className={cn(
                                 "w-full justify-start h-auto py-3 px-3 flex-col items-start gap-1 transition-all border border-transparent cursor-grab active:cursor-grabbing",
@@ -95,10 +96,10 @@ function SortableRuleSetItem({
                             <div className="flex items-center justify-between w-full">
                                 <div className="flex items-center gap-2 min-w-0 flex-1">
                                     <FolderOpen className={cn("h-3.5 w-3.5 flex-shrink-0", selectedSetId === set.id ? "text-zinc-100" : "text-zinc-500")} />
-                                    <div data-testid={`rules-set-item-${set.id}-name`} className={cn("text-sm font-medium truncate text-left", selectedSetId === set.id && "text-white", "select-none flex-1")}>{set.name}</div>
+                                    <div data-testid={`${testId.rulesSetItem(set.id)}-name`} className={cn("text-sm font-medium truncate text-left", selectedSetId === set.id && "text-white", "select-none flex-1")}>{set.name}</div>
                                 </div>
                                 <Badge
-                                    data-testid={`rules-set-item-${set.id}-count`}
+                                    data-testid={`${testId.rulesSetItem(set.id)}-count`}
                                     variant="secondary"
                                     className={cn(
                                         "text-[10px] h-5 px-1.5 font-normal",
@@ -181,7 +182,7 @@ export function RuleSetList({
 
     return (
         <ContentColumn
-            testId="rules-set-list"
+            testId={TESTID.RULES.SET_LIST}
             title={
                 <>
                     <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider px-2 text-left">
@@ -189,7 +190,7 @@ export function RuleSetList({
                     </h3>
                     <Popover open={isFormOpen} onOpenChange={setIsFormOpen}>
                         <PopoverTrigger asChild>
-                            <Button data-testid="rules-set-new-button" size="sm" variant="ghost" className="h-7 w-7 p-0 hover:bg-zinc-800">
+                            <Button data-testid={TESTID.RULES.SET_NEW_BUTTON} size="sm" variant="ghost" className="h-7 w-7 p-0 hover:bg-zinc-800">
                                 <Plus className="h-4 w-4" />
                             </Button>
                         </PopoverTrigger>
@@ -197,7 +198,7 @@ export function RuleSetList({
                             <form onSubmit={handleCreate}>
                                 <h4 className="font-medium leading-none mb-2 text-sm">New Rule Set</h4>
                                 <Input
-                                    data-testid="rules-set-create-input"
+                                    data-testid={TESTID.RULES.SET_CREATE_INPUT}
                                     value={newSetName}
                                     onChange={(e) => setNewSetName(e.target.value)}
                                     placeholder="Set Name"
@@ -205,7 +206,7 @@ export function RuleSetList({
                                     autoFocus
                                 />
                                 <div className="flex gap-2 justify-end">
-                                    <Button data-testid="rules-set-create-submit" type="submit" size="sm" className="h-7 text-xs" disabled={isCreating || !newSetName.trim()}>
+                                    <Button data-testid={TESTID.RULES.SET_CREATE_SUBMIT} type="submit" size="sm" className="h-7 text-xs" disabled={isCreating || !newSetName.trim()}>
                                         {isCreating ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Create'}
                                     </Button>
                                 </div>

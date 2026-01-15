@@ -82,14 +82,15 @@ export class ToolDetector {
             // 2. CLI Detection
             if (tool.detection.cliCommand) {
                 try {
-                    // Check existence
-                    await this.execPromise(`which ${tool.detection.cliCommand}`);
+                    // Check existence using shell to load user's PATH
+                    const shell = process.env.SHELL || '/bin/zsh';
+                    await this.execPromise(`${shell} -lc 'which ${tool.detection.cliCommand}'`);
                     result.paths.bin = await this.getCommandPath(tool.detection.cliCommand);
                     result.isInstalled = true;
 
                     // Try to get version
                     try {
-                        const { stdout } = await this.execPromise(`${tool.detection.cliCommand} --version`);
+                        const { stdout } = await this.execPromise(`${shell} -lc '${tool.detection.cliCommand} --version'`);
                         result.version = stdout.trim();
                     } catch (e) {
                         console.debug(`[ToolDetector] Version check failed for ${tool.name}:`, e);
@@ -137,7 +138,8 @@ export class ToolDetector {
 
     private async getCommandPath(command: string): Promise<string> {
         try {
-            const { stdout } = await this.execPromise(`which ${command}`);
+            const shell = process.env.SHELL || '/bin/zsh';
+            const { stdout } = await this.execPromise(`${shell} -lc 'which ${command}'`);
             return stdout.trim();
         } catch {
             return '';

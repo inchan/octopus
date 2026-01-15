@@ -41,8 +41,8 @@ describe('ToolDetector', () => {
 
     it('should detect CLI tools when valid command exists', async () => {
         mockExec.mockImplementation((cmd: string, callback: any) => {
-            if (cmd.startsWith('which claude')) {
-                // Pass standard 3-args: error, stdout, stderr
+            // Shell commands: /bin/zsh -lc 'which claude'
+            if (cmd.includes("which claude")) {
                 callback(null, '/usr/local/bin/claude', '');
             } else if (cmd.includes('--version')) {
                 callback(null, '1.0.0', '');

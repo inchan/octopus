@@ -57,7 +57,7 @@ export class RulesPage extends BasePage {
     // Pane 3
     this.pool = page.getByTestId(TESTID.RULES.POOL);
     this.poolNewButton = page.getByTestId(TESTID.RULES.POOL_NEW_BUTTON);
-    this.poolImportButton = page.getByTestId('rules-import-button');
+    this.poolImportButton = page.getByTestId(TESTID.RULES.POOL_IMPORT_BUTTON);
     this.editorNameInput = page.getByTestId(TESTID.RULES.EDITOR_NAME_INPUT);
     this.editorContentTextarea = page.getByTestId(TESTID.RULES.EDITOR_CONTENT_TEXTAREA);
     this.editorSaveButton = page.getByTestId(TESTID.RULES.EDITOR_SAVE_BUTTON);
@@ -212,11 +212,15 @@ export class RulesPage extends BasePage {
     }).first();
 
     // Item 내의 more 버튼 클릭
+    const testIdAttr = await ruleItem.getAttribute('data-testid');
+    const ruleId = testIdAttr?.replace('rules-pool-item-', '');
+    if (!ruleId) throw new Error('Cannot find rule ID');
+
     await ruleItem.hover();
-    await ruleItem.locator('[data-testid$="-more"]').click();
+    await this.page.getByTestId(testId.rulesPoolItemMore(ruleId)).click();
 
     // 팝오버에서 Edit 클릭
-    await this.page.locator('[data-testid$="-edit"]').filter({ hasText: 'Edit' }).first().click();
+    await this.page.getByTestId(testId.rulesPoolItemEdit(ruleId)).click();
   }
 
   /**
@@ -262,7 +266,7 @@ export class RulesPage extends BasePage {
     await this.openRuleEditDialog(name);
 
     // Toggle button in dialog
-    const toggleBtn = this.page.getByTestId('rules-editor-toggle-active-button');
+    const toggleBtn = this.page.getByTestId(TESTID.RULES.EDITOR_TOGGLE_ACTIVE_BUTTON);
     const oldTitle = await toggleBtn.getAttribute('title');
     await toggleBtn.click();
 
@@ -308,10 +312,18 @@ export class RulesPage extends BasePage {
     }).first();
 
     await expect(ruleItem).toBeVisible();
+    
+    // Get rule ID from item testid
+    const testIdAttr = await ruleItem.getAttribute('data-testid');
+    const ruleId = testIdAttr?.replace('rules-pool-item-', '');
+    if (!ruleId) throw new Error('Cannot find rule ID');
 
-    const expectedTitle = isActive ? 'Active' : 'Inactive';
     // Item 내의 status dot (title 속성 포함 div) 검증
-    await expect(ruleItem.locator(`div[title="${expectedTitle}"]`)).toBeVisible();
+    const statusDot = isActive 
+        ? this.page.getByTestId(testId.rulesPoolItemStatusActive(ruleId))
+        : this.page.getByTestId(testId.rulesPoolItemStatusInactive(ruleId));
+        
+    await expect(statusDot).toBeVisible();
   }
 
   /**

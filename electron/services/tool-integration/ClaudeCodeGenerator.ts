@@ -35,7 +35,7 @@ export class ClaudeCodeGenerator implements ConfigGenerator {
 
     generateMcpConfig(_scope: ConfigScope, mcpServersList: McpServer[]): GeneratedFile[] {
         // Generate for Global scope primarily
-        const mcpServers: Record<string, any> = {};
+        const mcpServers: Record<string, unknown> = {};
         mcpServersList.forEach(server => {
             if (!server.isActive) return;
 
@@ -65,11 +65,11 @@ export class ClaudeCodeGenerator implements ConfigGenerator {
         const homeDir = os.homedir();
         const targetPath = path.join(homeDir, '.claude.json');
 
-        let existingConfig: any = {};
+        let existingConfig: Record<string, unknown> = {};
         try {
             if (fs.existsSync(targetPath)) {
                 const raw = fs.readFileSync(targetPath, 'utf-8');
-                existingConfig = JSON.parse(raw);
+                existingConfig = JSON.parse(raw) as Record<string, unknown>;
             }
         } catch (error) {
             console.warn('[ClaudeCodeGenerator] Failed to read existing config:', error);

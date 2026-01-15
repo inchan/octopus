@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Loader2, X, Archive, PlayCircle } from 'lucide-react';
+import { TESTID } from '@shared/test-ids';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -34,7 +35,7 @@ export function RuleEditor({ mode, initialData, onCancel, onSubmit, isSubmitting
 
     return (
         <ScrollArea className="max-h-80">
-            <div data-testid="rules-editor" className="p-4">
+            <div data-testid={TESTID.RULES.EDITOR} className="p-4">
                 <div className="flex items-center justify-between mb-4">
                     <h3 className="font-semibold flex items-center gap-2">
                         {mode === 'create' ? 'New Rule' : 'Edit Rule'}
@@ -55,7 +56,7 @@ export function RuleEditor({ mode, initialData, onCancel, onSubmit, isSubmitting
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-3">
                     <Input
-                        data-testid="rules-editor-name-input"
+                        data-testid={TESTID.RULES.EDITOR_NAME_INPUT}
                         name="name"
                         required
                         placeholder="Rule Name"
@@ -64,7 +65,7 @@ export function RuleEditor({ mode, initialData, onCancel, onSubmit, isSubmitting
                         autoFocus={mode === 'create'}
                     />
                     <textarea
-                        data-testid="rules-editor-content-textarea"
+                        data-testid={TESTID.RULES.EDITOR_CONTENT_TEXTAREA}
                         name="content"
                         required
                         defaultValue={initialData?.content}
@@ -78,6 +79,7 @@ export function RuleEditor({ mode, initialData, onCancel, onSubmit, isSubmitting
                                 type="button"
                                 variant="outline"
                                 size="sm"
+                                data-testid={TESTID.RULES.EDITOR_TOGGLE_ACTIVE_BUTTON}
                                 className={cn(
                                     "h-7 text-xs gap-1.5",
                                     isActive ? "hover:text-amber-500 hover:border-amber-500/50" : "hover:text-green-500 hover:border-green-500/50"
@@ -99,8 +101,8 @@ export function RuleEditor({ mode, initialData, onCancel, onSubmit, isSubmitting
                         ) : <div></div>}
 
                         <div className="flex gap-2">
-                            <Button data-testid="rules-editor-cancel-button" type="button" variant="ghost" size="sm" onClick={onCancel}>Cancel</Button>
-                            <Button data-testid="rules-editor-save-button" type="submit" size="sm" disabled={isSubmitting}>
+                            <Button data-testid={TESTID.RULES.EDITOR_CANCEL_BUTTON} type="button" variant="ghost" size="sm" onClick={onCancel}>Cancel</Button>
+                            <Button data-testid={TESTID.RULES.EDITOR_SAVE_BUTTON} type="submit" size="sm" disabled={isSubmitting}>
                                 {isSubmitting && <Loader2 className="mr-1 h-3 w-3 animate-spin" />}
                                 {mode === 'create' ? 'Create' : 'Save'}
                             </Button>
