@@ -4,7 +4,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi, describe, it, expect, beforeEach, Mock } from 'vitest';
-import KeyValueList from './KeyValueList';
+import { KeyValueList } from './KeyValueList';
 
 describe('KeyValueList Component', () => {
     let mockOnChange: Mock;
