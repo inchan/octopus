@@ -43,7 +43,11 @@ describe('SyncService Integration', () => {
             mockMcpService,
             mockConnectionManager,
             mockRulesService,
-            mockRuleSetService
+            mockRuleSetService,
+            {} as any, // ProjectService
+            {} as any, // ToolConfigService
+            {} as any, // ToolIntegrationService
+            {} as any  // McpSetService
         );
     });
 

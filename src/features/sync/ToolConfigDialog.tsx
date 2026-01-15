@@ -34,8 +34,17 @@ export const ToolConfigDialog: React.FC<ToolConfigDialogProps> = ({ isOpen, onCl
         setIsGenerating(true);
         setStatus(null);
         try {
+            // Create a temporary RuleSet object to satisfy the API
+            const tempRuleSet: any = {
+                id: 'temp',
+                name: 'Temporary Set',
+                items: rules.filter(r => r.isActive).map(r => r.id),
+                updatedAt: new Date().toISOString(),
+                createdAt: new Date().toISOString()
+            };
+
             const result = await window.api.toolIntegration.generateConfig(selectedTool, scope, {
-                rules: rules.filter(r => r.isActive),
+                ruleSet: tempRuleSet,
                 mcpSet: activeMcpSet
             });
             if (result.success) {

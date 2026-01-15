@@ -89,15 +89,16 @@ describe('History & Rollback Integration (Mocked)', () => {
 
         // Register Revert Handlers (Logic strictly copied from main.ts)
         historyService.registerRevertHandler('rule', async (action, data) => {
+            const ruleData = data as any;
             switch (action) {
                 case 'create':
-                    await rulesService.delete(data.id, { skipLog: true });
+                    await rulesService.delete(ruleData.id, { skipLog: true });
                     break;
                 case 'delete':
-                    await rulesService.create(data, { skipLog: true });
+                    await rulesService.create(ruleData, { skipLog: true });
                     break;
                 case 'update':
-                    await rulesService.update(data, { skipLog: true });
+                    await rulesService.update(ruleData, { skipLog: true });
                     break;
             }
         });

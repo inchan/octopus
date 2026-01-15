@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Loader2, RotateCcw, Save } from 'lucide-react';
-import type { RuleSet, McpSet } from '@shared/types';
 
 import { GeneratedFile } from '../../../shared/types';
 

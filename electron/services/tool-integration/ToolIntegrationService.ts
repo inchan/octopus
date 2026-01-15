@@ -1,5 +1,6 @@
-import { ConfigGenerator, ConfigScope, GeneratedFile, ToolType } from './types';
+import { ConfigScope, GeneratedFile } from '../../../shared/types';
 import { Rule, McpServer } from '../../../shared/types';
+import { ConfigGenerator } from './types';
 
 export class ToolIntegrationService {
     private generators: Map<string, ConfigGenerator> = new Map();

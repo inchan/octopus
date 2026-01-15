@@ -68,11 +68,11 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
             }
         }
         // 2. If it is NOT a direct command object (no 'command' key), but has keys that are objects?
-        else if (!parsed.command && !parsed.name && Object.keys(parsed).length > 0) {
+        else if (!(parsed as Record<string, any>).command && !(parsed as Record<string, any>).name && Object.keys(parsed).length > 0) {
             const keys = Object.keys(parsed);
-            const firstVal = parsed[keys[0]];
+            const firstVal = (parsed as Record<string, any>)[keys[0]];
             if (firstVal && typeof firstVal === 'object' && !Array.isArray(firstVal)) {
-                if (firstVal.command) {
+                if ((firstVal as Record<string, any>).command) {
                     target = firstVal;
                     if (!target.name) target.name = keys[0];
                 }

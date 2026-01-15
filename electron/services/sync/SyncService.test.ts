@@ -1,29 +1,17 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { SyncService } from './SyncService';
-import { IMcpService, IRulesService, IConnectionManager } from './types';
 import path from 'path';
 import fs from 'fs/promises';
-import { ToolConfigRepository } from '../tool-config/ToolConfigRepository';
 
 // Mock dependencies
 const mockRulesService = {
     getAll: vi.fn(),
-} as unknown as IRulesService;
+} as any;
 
 const mockMcpService = {
     getAll: vi.fn(),
-} as unknown as IMcpService;
-
-const mockConnectionManager = {
-    connect: vi.fn(),
-} as unknown as IConnectionManager;
-
-const mockToolConfigRepository = {
-    // mock methods if needed
-} as unknown as ToolConfigRepository;
-
-const mockDb = {} as any; // BetterSqlite3.Database mock if needed
+} as any;
 
 vi.mock('fs/promises');
 
@@ -33,12 +21,12 @@ describe('SyncService', () => {
     beforeEach(() => {
         service = new SyncService(
             mockMcpService,
+            {} as any, // ConnectionManager - mocked inline below if needed or use variable
             mockRulesService,
-            {} as any, // ProjectService
-            {} as any, // ToolIntegrationService
-            mockToolConfigRepository,
-            {} as any, // ToolSetService
             {} as any, // RuleSetService
+            {} as any, // ProjectService
+            {} as any, // ToolConfigService
+            {} as any, // ToolIntegrationService
             {} as any  // McpSetService
         );
         vi.resetAllMocks();
