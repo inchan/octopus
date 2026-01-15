@@ -1,6 +1,63 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { autoUpdater } from 'electron-updater';
+import log from 'electron-log';
+
+// Configure logger
+log.transports.file.level = 'info';
+autoUpdater.logger = log;
+
+function setupAutoUpdater(win: BrowserWindow) {
+    if (process.platform === 'darwin') {
+        autoUpdater.autoDownload = false;
+    }
+
+    autoUpdater.on('checking-for-update', () => {
+        log.info('Checking for update...');
+    });
+
+    autoUpdater.on('update-available', (info) => {
+        log.info('Update available.', info);
+        win.webContents.send('update-available', info);
+    });
+
+    autoUpdater.on('update-not-available', (info) => {
+        log.info('Update not available.', info);
+    });
+
+    autoUpdater.on('error', (err) => {
+        log.error('Error in auto-updater. ' + err);
+        win.webContents.send('update-error', err.message);
+    });
+
+    autoUpdater.on('download-progress', (progressObj) => {
+        win.webContents.send('update-progress', progressObj);
+    });
+
+    autoUpdater.on('update-downloaded', (info) => {
+        log.info('Update downloaded');
+        win.webContents.send('update-downloaded', info);
+    });
+
+    // Initial check
+    setTimeout(() => {
+        autoUpdater.checkForUpdates();
+    }, 3000);
+}
+
+// IPC handlers for updates
+ipcMain.handle('check-for-updates', () => {
+    return autoUpdater.checkForUpdates();
+});
+
+ipcMain.handle('install-update', () => {
+    autoUpdater.quitAndInstall();
+});
+
+ipcMain.handle('open-download-page', () => {
+    shell.openExternal('https://github.com/inchan/octopus/releases/latest');
+});
 
 // Services
 import { RulesService } from './services/rules/RulesService';
@@ -90,6 +147,8 @@ function createWindow() {
     } else {
         win.loadFile(path.join(RENDERER_DIST, 'index.html'))
     }
+
+    setupAutoUpdater(win);
 }
 
 app.on('window-all-closed', () => {

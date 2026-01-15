@@ -87,6 +87,21 @@ const api: IElectronAPI = {
         get: (toolId: string, contextId?: string) => ipcRenderer.invoke('tool-config:get', { toolId, contextId }),
         set: (params: SetToolConfigParams) => ipcRenderer.invoke('tool-config:set', params),
         listProject: (projectId: string) => ipcRenderer.invoke('tool-config:list-project', projectId),
+    },
+    updater: {
+        checkForUpdates: () => ipcRenderer.invoke('check-for-updates'),
+        installUpdate: () => ipcRenderer.invoke('install-update'),
+        openDownloadPage: () => ipcRenderer.invoke('open-download-page'),
+        onUpdateAvailable: (callback) => ipcRenderer.on('update-available', (_, info) => callback(info)),
+        onUpdateProgress: (callback) => ipcRenderer.on('update-progress', (_, progress) => callback(progress)),
+        onUpdateDownloaded: (callback) => ipcRenderer.on('update-downloaded', (_, info) => callback(info)),
+        onUpdateError: (callback) => ipcRenderer.on('update-error', (_, error) => callback(error)),
+        removeListeners: () => {
+            ipcRenderer.removeAllListeners('update-available');
+            ipcRenderer.removeAllListeners('update-progress');
+            ipcRenderer.removeAllListeners('update-downloaded');
+            ipcRenderer.removeAllListeners('update-error');
+        }
     }
 };
 

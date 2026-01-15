@@ -1,7 +1,7 @@
 import {
     IElectronAPI, IRulesAPI, IMcpAPI, ISyncAPI, ISettingsAPI,
     IToolDetectionAPI, IDialogAPI, IHistoryAPI, IToolIntegrationAPI,
-    ISetAPI, IToolConfigAPI, IProjectsAPI, Rule, HistoryEntry, McpServer,
+    ISetAPI, IToolConfigAPI, IProjectsAPI, IUpdaterAPI, Rule, HistoryEntry, McpServer,
     SettingsSchema, CreateRuleParams, UpdateRuleParams,
     CreateMcpServerParams, UpdateMcpServerParams, CreateMcpSetParams,
     UpdateMcpSetParams, CreateRuleSetParams, UpdateRuleSetParams,
@@ -51,6 +51,17 @@ class MockApi implements IElectronAPI {
     private set _toolConfigs(v: any[]) { setStorage('tool_configs', v); }
 
     ping = async () => 'pong';
+
+    updater: IUpdaterAPI = {
+        checkForUpdates: async () => { console.log('Mock: Checking for updates...'); },
+        installUpdate: async () => { console.log('Mock: Installing update...'); },
+        openDownloadPage: async () => { console.log('Mock: Opening download page...'); },
+        onUpdateAvailable: (_cb) => { console.log('Mock: Registered update-available listener'); },
+        onUpdateProgress: (_cb) => { console.log('Mock: Registered update-progress listener'); },
+        onUpdateDownloaded: (_cb) => { console.log('Mock: Registered update-downloaded listener'); },
+        onUpdateError: (_cb) => { console.log('Mock: Registered update-error listener'); },
+        removeListeners: () => { console.log('Mock: Removed update listeners'); }
+    };
 
     rules: IRulesAPI = {
         list: async () => ({ success: true, data: this._rules }),

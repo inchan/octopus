@@ -120,6 +120,17 @@ export interface ISetAPI {
     };
 }
 
+export interface IUpdaterAPI {
+    checkForUpdates(): Promise<void>;
+    installUpdate(): Promise<void>;
+    openDownloadPage(): Promise<void>;
+    onUpdateAvailable(callback: (info: any) => void): void;
+    onUpdateProgress(callback: (progress: any) => void): void;
+    onUpdateDownloaded(callback: (info: any) => void): void;
+    onUpdateError(callback: (error: string) => void): void;
+    removeListeners(): void;
+}
+
 export interface IElectronAPI {
     ping(): Promise<string>;
     rules: IRulesAPI;
@@ -133,4 +144,5 @@ export interface IElectronAPI {
     dialog: IDialogAPI;
     history: IHistoryAPI;
     sets: ISetAPI;
+    updater: IUpdaterAPI;
 }
