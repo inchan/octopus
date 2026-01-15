@@ -17,13 +17,13 @@
       "dist/**/*"
     ],
     "mac": {
-      "identity": null,
       "icon": "build/icons/icon.icns",
       "artifactName": "${productName}_${version}_${arch}.${ext}",
       "target": [
         "dmg",
         "zip"
       ],
+      "gatekeeperAssess": false,
       "category": "public.app-category.developer-tools"
     },
     "win": {
