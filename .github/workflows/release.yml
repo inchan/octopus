@@ -86,6 +86,11 @@ jobs:
       - name: Build application
         shell: bash
         run: |
+          # Unset empty CSC variables to prevent electron-builder from treating empty string as file path
+          if [ -z "$CSC_LINK" ]; then
+            unset CSC_LINK
+            unset CSC_KEY_PASSWORD
+          fi
           npm run build
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
