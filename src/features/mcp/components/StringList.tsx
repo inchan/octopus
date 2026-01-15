@@ -94,9 +94,9 @@ export function StringList({
     );
 
     // Sync if props change drastically (e.g. reset form)
+    // Note: This effect currently does nothing but is kept for future reset functionality
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(() => {
-        // If external value length differs or content differs significantly, reset.
-        // This is a naive check to support form resets.
         const currentVals = items.map(i => i.val);
         if (JSON.stringify(currentVals) !== JSON.stringify(value)) {
             // careful: this might cause loops if onChange triggers parent re-render which triggers this.

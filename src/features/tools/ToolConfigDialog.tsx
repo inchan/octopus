@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -113,9 +113,9 @@ export function ToolConfigDialog({
         if (isOpen && toolId) {
             loadData();
         }
-    }, [isOpen, toolId, contextType, contextId]);
+    }, [isOpen, toolId, contextType, contextId]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    const loadData = async () => {
+    const loadData = useCallback(async () => {
         setIsLoading(true);
         try {
             // Load available sets with logging
@@ -198,7 +198,7 @@ export function ToolConfigDialog({
         } finally {
             setIsLoading(false);
         }
-    };
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSave = async () => {
         setIsSaving(true);

@@ -38,8 +38,8 @@ export const SyncPage: React.FC = () => {
         },
     });
 
-    const ruleSets = ruleSetsResult?.success ? ruleSetsResult.data : [];
-    const mcpSets = mcpSetsResult?.success ? mcpSetsResult.data : [];
+    const ruleSets = useMemo(() => ruleSetsResult?.success ? ruleSetsResult.data : [], [ruleSetsResult]);
+    const mcpSets = useMemo(() => mcpSetsResult?.success ? mcpSetsResult.data : [], [mcpSetsResult]);
 
     // Virtual Tool Sets (static options for filtering)
     const virtualToolSets: SyncItem[] = useMemo(

@@ -79,6 +79,9 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
                 if (target && !target.name) {
                     target.name = keys[0];
                 }
+            } else {
+                // Empty mcpServers object - return success with no data
+                return { success: true, data: undefined };
             }
         }
         // 2. If it is NOT a direct command object (no 'command' key), but has keys that are objects?
@@ -86,10 +89,8 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
             const keys = Object.keys(typedParsed);
             const firstVal = (typedParsed as Record<string, unknown>)[keys[0]];
             if (firstVal && typeof firstVal === 'object' && !Array.isArray(firstVal)) {
-                if ((firstVal as McpServerConfig).command) {
-                    target = firstVal as McpServerConfig;
-                    if (!target.name) target.name = keys[0];
-                }
+                target = firstVal as McpServerConfig;
+                if (!target.name) target.name = keys[0];
             }
         } else {
             // Assume it's a direct config

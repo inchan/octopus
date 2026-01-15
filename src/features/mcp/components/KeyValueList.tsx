@@ -24,6 +24,7 @@ export function KeyValueList({
     );
 
     // Sync from props when external value changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(() => {
         const currentKeys = items.map(i => i.key).sort().join(',');
         const propsKeys = Object.keys(value).sort().join(',');
