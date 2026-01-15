@@ -2,6 +2,8 @@
   "name": "octopus",
   "private": true,
   "version": "0.0.2",
+  "description": "AI-Powered Tool & Rules Synchronization Manager",
+  "author": "inchan",
   "type": "module",
   "main": "dist-electron/main.js",
   "build": {
