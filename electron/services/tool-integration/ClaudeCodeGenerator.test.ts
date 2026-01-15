@@ -29,7 +29,7 @@ describe('ClaudeCodeGenerator', () => {
             const result = generator.generateRules('Global', rules);
 
             expect(result).toHaveLength(1);
-            expect(result[0].path).toBe(path.join(os.homedir(), '.claude', 'rules.md'));
+            expect(result[0].path).toBe(path.join(os.homedir(), '.claude', 'CLAUDE.md'));
             expect(result[0].content).toContain('# Claude Code Rules (Global)');
             expect(result[0].content).toContain('## Rule 1');
             expect(result[0].content).toContain('Content 1');
@@ -51,7 +51,7 @@ describe('ClaudeCodeGenerator', () => {
             const result = generator.generateMcpConfig('Global', mcpServers);
 
             expect(result).toHaveLength(1);
-            expect(result[0].path).toBe(path.join(os.homedir(), '.claude', 'claude_code_config.json'));
+            expect(result[0].path).toBe(path.join(os.homedir(), '.claude.json'));
 
             const content = JSON.parse(result[0].content);
             expect(content.mcpServers).toBeDefined();

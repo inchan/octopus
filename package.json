@@ -1,7 +1,7 @@
 {
   "name": "octopus",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "dist-electron/main.js",
   "build": {
@@ -15,21 +15,26 @@
       "dist/**/*"
     ],
     "mac": {
+      "icon": "build/icons/icon.icns",
       "artifactName": "${productName}_${version}_${arch}.${ext}",
       "target": [
         "dmg",
         "zip"
-      ]
+      ],
+      "category": "public.app-category.developer-tools"
     },
     "win": {
+      "icon": "build/icons/icon.ico",
       "target": [
         "nsis"
       ]
     },
     "linux": {
+      "icon": "build/icons/icon.png",
       "target": [
         "AppImage"
-      ]
+      ],
+      "category": "Development"
     }
   },
   "scripts": {
@@ -39,9 +44,15 @@
     "build": "tsc -b && vite build && electron-builder",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test",
     "lint": "eslint .",
     "preview": "vite preview",
-    "scenario-stats": "tsx scripts/generate-scenario-stats.ts"
+    "scenario-stats": "tsx scripts/generate-scenario-stats.ts",
+    "version:patch": "node scripts/bump-version.js patch",
+    "version:minor": "node scripts/bump-version.js minor",
+    "version:major": "node scripts/bump-version.js major",
+    "icons:generate": "node scripts/generate-icons.js",
+    "icons:ico": "node scripts/generate-ico.js"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -97,6 +108,7 @@
     "happy-dom": "^20.0.11",
     "playwright": "^1.57.0",
     "postcss": "^8.5.6",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",

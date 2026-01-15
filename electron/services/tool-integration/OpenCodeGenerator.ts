@@ -84,18 +84,11 @@ export class OpenCodeGenerator implements ConfigGenerator {
                 // Command-based server
                 let fullCommand = [server.command, ...(server.args || [])];
 
-                // Adaptive Sync: Serena Optimization for OpenCode/Qwen
+                // Adaptive Sync: Serena --context 보완 (사용자 args 유지)
                 if (server.name.toLowerCase().includes('serena')) {
-                    // Force Agent mode
-                    fullCommand = [
-                        'uvx',
-                        '--from',
-                        'git+https://github.com/oraios/serena',
-                        'serena',
-                        'start-mcp-server',
-                        '--context',
-                        'agent'
-                    ];
+                    if (!fullCommand.includes('--context')) {
+                        fullCommand = [...fullCommand, '--context', 'agent'];
+                    }
                 }
 
                 mcp[server.name] = {

@@ -14,6 +14,8 @@ export default defineConfig({
             '@electron': path.resolve(__dirname, 'electron'),
         },
         coverage: {
+            provider: 'v8',
+            reporter: ['text', 'json', 'html'],
             include: ['electron/**/*.ts', 'src/**/*.tsx'],
             exclude: ['**/*.d.ts', '**/*.test.ts', 'dist-electron/**']
         }

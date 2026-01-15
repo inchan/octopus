@@ -46,19 +46,11 @@ export class ClaudeCodeGenerator implements ConfigGenerator {
                 };
             } else {
                 let finalArgs = server.args || [];
-                // Adaptive Sync: Serena Optimization for Claude Code CLI
+                // Adaptive Sync: Serena --context 보완 (사용자 args 유지)
                 if (server.name.toLowerCase().includes('serena')) {
-                    // Force CLI-optimized arguments
-                    finalArgs = [
-                        '--from',
-                        'git+https://github.com/oraios/serena',
-                        'serena',
-                        'start-mcp-server',
-                        '--context',
-                        'claude-code',
-                        '--project',
-                        '$(pwd)'
-                    ];
+                    if (!finalArgs.includes('--context')) {
+                        finalArgs = [...finalArgs, '--context', 'claude-code'];
+                    }
                 }
 
                 mcpServers[server.name] = {

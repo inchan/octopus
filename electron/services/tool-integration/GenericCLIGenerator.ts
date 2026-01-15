@@ -55,26 +55,21 @@ export class GenericCLIGenerator implements ConfigGenerator {
             } else {
                 let finalArgs = server.args || [];
 
-                // Adaptive Sync: Serena Optimization based on tool
+                // Adaptive Sync: Serena --context 보완 (사용자 args 유지)
                 if (server.name.toLowerCase().includes('serena')) {
-                    let contextValue = 'desktop-app'; // default
+                    if (!finalArgs.includes('--context')) {
+                        let contextValue = 'desktop-app'; // default
 
-                    if (this.toolName.toLowerCase().includes('codex')) {
-                        contextValue = 'codex';
-                    } else if (this.toolName.toLowerCase().includes('gemini')) {
-                        contextValue = 'agent';
-                    } else if (this.toolName.toLowerCase().includes('qwen')) {
-                        contextValue = 'agent';
+                        if (this.toolName.toLowerCase().includes('codex')) {
+                            contextValue = 'codex';
+                        } else if (this.toolName.toLowerCase().includes('gemini')) {
+                            contextValue = 'agent';
+                        } else if (this.toolName.toLowerCase().includes('qwen')) {
+                            contextValue = 'agent';
+                        }
+
+                        finalArgs = [...finalArgs, '--context', contextValue];
                     }
-
-                    finalArgs = [
-                        '--from',
-                        'git+https://github.com/oraios/serena',
-                        'serena',
-                        'start-mcp-server',
-                        '--context',
-                        contextValue
-                    ];
                 }
 
                 mcpServers[server.name] = {
@@ -113,7 +108,7 @@ export class GenericCLIGenerator implements ConfigGenerator {
             existingConfig.mcp_servers = existingConfig.mcp_servers || {};
 
             // We replace the managed servers, but keep others if they exist?
-            // Usually Sync means "Current State of Align Agents" -> "Target State".
+            // Usually Sync means "Current State of octopus" -> "Target State".
             // If we want to strictly manage, we overwrite the mcp_servers block.
             // But we must preserve other keys in existingConfig.
 

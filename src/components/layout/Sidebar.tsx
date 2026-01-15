@@ -42,7 +42,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activePage, onNavigate }) => {
                     <div className="w-3 h-3 bg-white/90 rounded-full"></div>
                 </div>
                 <div>
-                    <span className="font-bold text-base text-zinc-100 block leading-tight">Align Agents</span>
+                    <span className="font-bold text-base text-zinc-100 block leading-tight">octopus</span>
                     <span className="text-[10px] text-zinc-500 font-medium uppercase tracking-wider">v2.0 Beta</span>
                 </div>
             </div>

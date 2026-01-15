@@ -34,9 +34,7 @@ export const SERENA_PRESETS: McpPreset[] = [
       'serena',
       'start-mcp-server',
       '--context',
-      'claude-code',
-      '--project',
-      '$(pwd)'
+      'claude-code'
     ]
   },
   {

@@ -1,6 +1,17 @@
-# Octopus 🐙
+<div align="center">
+  <img src="build/icons/icon.svg" alt="Octopus Logo" width="120" height="120">
+  
+  # Octopus 🐙
+  
+  **Centralized AI Tool Configuration Manager**
+  
+  [![Build](https://github.com/your-org/octopus/workflows/Build/badge.svg)](https://github.com/your-org/octopus/actions)
+  [![Release](https://github.com/your-org/octopus/workflows/Release/badge.svg)](https://github.com/your-org/octopus/actions)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
+  
+</div>
 
-**Centralized AI Tool Configuration Manager**
+---
 
 Octopus is an Electron-based desktop application that synchronizes Rules and MCP server configurations across multiple AI coding tools.
 

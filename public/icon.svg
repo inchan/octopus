@@ -1,0 +1,85 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="octopusGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Octopus Body (Head) -->
+  <circle cx="256" cy="180" r="90" fill="url(#octopusGradient)" filter="url(#shadow)"/>
+  
+  <!-- Eyes -->
+  <circle cx="230" cy="165" r="12" fill="white"/>
+  <circle cx="282" cy="165" r="12" fill="white"/>
+  <circle cx="233" cy="165" r="6" fill="#1F2937"/>
+  <circle cx="285" cy="165" r="6" fill="#1F2937"/>
+  
+  <!-- 8 Tentacles (Arms) - Representing multiple AI tools -->
+  <!-- Tentacle 1 (Top Left) -->
+  <path d="M 200 220 Q 150 240, 140 280 Q 135 300, 145 315 Q 155 330, 170 325" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 2 (Left) -->
+  <path d="M 185 240 Q 130 260, 110 300 Q 100 320, 105 340 Q 110 360, 125 365" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 3 (Bottom Left) -->
+  <path d="M 200 260 Q 160 300, 150 350 Q 145 380, 155 405 Q 165 430, 180 435" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 4 (Bottom Center Left) -->
+  <path d="M 230 270 Q 210 330, 215 380 Q 220 420, 235 445 Q 245 460, 260 460" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 5 (Bottom Center Right) -->
+  <path d="M 282 270 Q 302 330, 297 380 Q 292 420, 277 445 Q 267 460, 252 460" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 6 (Bottom Right) -->
+  <path d="M 312 260 Q 352 300, 362 350 Q 367 380, 357 405 Q 347 430, 332 435" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 7 (Right) -->
+  <path d="M 327 240 Q 382 260, 402 300 Q 412 320, 407 340 Q 402 360, 387 365" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Tentacle 8 (Top Right) -->
+  <path d="M 312 220 Q 362 240, 372 280 Q 377 300, 367 315 Q 357 330, 342 325" 
+        stroke="url(#octopusGradient)" stroke-width="16" fill="none" 
+        stroke-linecap="round" opacity="0.9"/>
+  
+  <!-- Suction cups on tentacles (small circles) -->
+  <circle cx="145" cy="315" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="105" cy="340" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="155" cy="405" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="235" cy="445" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="277" cy="445" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="357" cy="405" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="407" cy="340" r="6" fill="#EC4899" opacity="0.6"/>
+  <circle cx="367" cy="315" r="6" fill="#EC4899" opacity="0.6"/>
+  
+  <!-- Smile -->
+  <path d="M 230 195 Q 256 205, 282 195" 
+        stroke="#1F2937" stroke-width="3" fill="none" 
+        stroke-linecap="round" opacity="0.6"/>
+</svg>

@@ -89,7 +89,7 @@ describe('ToolDetector', () => {
         const cached = detector.getCached();
 
         expect(cached).not.toBeNull();
-        expect(cached).toHaveLength(11); // SUPPORTED_TOOLS count
+        expect(cached).toHaveLength(12); // SUPPORTED_TOOLS count
         const cursor = cached!.find(r => r.id === 'cursor');
         expect(cursor?.isInstalled).toBe(true);
     });

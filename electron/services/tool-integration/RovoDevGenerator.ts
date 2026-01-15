@@ -50,16 +50,11 @@ export class RovoDevGenerator implements ConfigGenerator {
             } else {
                 let finalArgs = server.args || [];
 
-                // Adaptive Sync: Serena Optimization for Rovo Dev
+                // Adaptive Sync: Serena --context 보완 (사용자 args 유지)
                 if (server.name.toLowerCase().includes('serena')) {
-                    finalArgs = [
-                        '--from',
-                        'git+https://github.com/oraios/serena',
-                        'serena',
-                        'start-mcp-server',
-                        '--context',
-                        'agent'
-                    ];
+                    if (!finalArgs.includes('--context')) {
+                        finalArgs = [...finalArgs, '--context', 'agent'];
+                    }
                 }
 
                 mcpServers[server.name] = {

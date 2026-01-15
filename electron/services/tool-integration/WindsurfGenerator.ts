@@ -35,16 +35,11 @@ export class WindsurfGenerator implements ConfigGenerator {
             } else {
                 let finalArgs = server.args || [];
 
-                // Adaptive Sync: Serena Optimization for IDE
+                // Adaptive Sync: Serena --context 보완 (사용자 args 유지)
                 if (server.name.toLowerCase().includes('serena')) {
-                    finalArgs = [
-                        '--from',
-                        'git+https://github.com/oraios/serena',
-                        'serena',
-                        'start-mcp-server',
-                        '--context',
-                        'ide'
-                    ];
+                    if (!finalArgs.includes('--context')) {
+                        finalArgs = [...finalArgs, '--context', 'ide'];
+                    }
                 }
 
                 mcpServers[server.name] = {

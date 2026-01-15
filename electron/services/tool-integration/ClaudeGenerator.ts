@@ -34,17 +34,11 @@ export class ClaudeGenerator implements ConfigGenerator {
                 }
 
                 let finalArgs = server.args || [];
-                // Adaptive Sync: Serena Optimization for Claude Desktop
+                // Adaptive Sync: Serena --context 보완 (사용자 args 유지)
                 if (server.name.toLowerCase().includes('serena')) {
-                    // Force Desktop-optimized arguments
-                    finalArgs = [
-                        '--from',
-                        'git+https://github.com/oraios/serena',
-                        'serena',
-                        'start-mcp-server',
-                        '--context',
-                        'desktop-app'
-                    ];
+                    if (!finalArgs.includes('--context')) {
+                        finalArgs = [...finalArgs, '--context', 'desktop-app'];
+                    }
                 }
 
                 mcpServers[server.name] = {

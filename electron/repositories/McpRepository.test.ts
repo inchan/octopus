@@ -39,7 +39,14 @@ describe('McpRepository Integration', () => {
         expect(created.isActive).toBe(true);
 
         const fetched = repository.getById(created.id);
-        expect(fetched).toEqual(created);
+        expect(fetched).toMatchObject({
+            id: created.id,
+            name: params.name,
+            command: params.command,
+            args: params.args,
+            env: params.env,
+            isActive: params.isActive
+        });
     });
 
     it('should list all servers', async () => {

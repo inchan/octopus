@@ -2,7 +2,6 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { SettingsService } from './SettingsService';
 import Store from 'electron-store';
 
-// Mock electron-store
 vi.mock('electron-store', () => {
     return {
         default: vi.fn().mockImplementation(function () {
@@ -34,15 +33,11 @@ describe('SettingsService', () => {
     });
 
     it('should get a setting value', () => {
-        const val = settingsService.get('theme');
-        expect(val).toBe('system');
+        expect(settingsService.get('theme')).toBe('system');
     });
 
     it('should set a setting value', () => {
         settingsService.set('theme', 'dark');
-        // We can't easily check the internal store call depending on how we mocked it,
-        // but verifying the method doesn't throw is a start. 
-        // A better mock would store state.
     });
 
     it('should get all settings', () => {
