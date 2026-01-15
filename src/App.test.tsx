@@ -3,18 +3,18 @@
  */
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../src/App';
-import { vi, describe, it, expect } from 'vitest';
-// import React from 'react'; // Removed unused import
+import { vi, describe, it, expect, beforeAll } from 'vitest';
+import { setupMockApi } from './mocks/api';
 
 // Mock child components to isolate App logic
 vi.mock('@/features/tools/ToolsPage', () => ({ ToolsPage: () => <div data-testid="tools-page">Tools Page</div> }));
 vi.mock('@/features/sync/SyncPage', () => ({ SyncPage: () => <div data-testid="sync-page">Sync Page</div> }));
 vi.mock('@/features/projects/ProjectsPage', () => ({ ProjectsPage: () => <div data-testid="projects-page">Projects Page</div> }));
 
-// Mock Sidebar if necessary, or let it render (it's part of AppShell)
-// Since AppShell imports Sidebar, and we want to test navigation which happens via Sidebar, 
-// we should probably let Sidebar render or mock it if it's too complex.
-// Let's assume standard render is fine for integration test.
+// Setup mock API for tests
+beforeAll(() => {
+    setupMockApi();
+});
 
 describe('App Navigation', () => {
     it('renders Tools page by default', () => {
