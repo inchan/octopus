@@ -77,7 +77,7 @@ export function useSyncSelection({
     useEffect(() => {
         if (validToolSetIds.size === 0) return;
         if (!validToolSetIds.has(selectedToolSetId)) {
-            setSelectedToolSetId(defaultToolSetId);
+            setSelectedToolSetId(prev => prev !== defaultToolSetId ? defaultToolSetId : prev);
         }
     }, [defaultToolSetId, selectedToolSetId, validToolSetIds]);
 
@@ -85,24 +85,24 @@ export function useSyncSelection({
     useEffect(() => {
         if (isRuleSetsLoading) return;
         if (validRuleSetIds.size === 0) {
-            if (selectedRuleSetId !== noneId) setSelectedRuleSetId(noneId);
+            setSelectedRuleSetId(prev => prev !== noneId ? noneId : prev);
             return;
         }
 
         if (!validRuleSetIds.has(selectedRuleSetId)) {
-            setSelectedRuleSetId(noneId);
+            setSelectedRuleSetId(prev => prev !== noneId ? noneId : prev);
         }
     }, [isRuleSetsLoading, noneId, selectedRuleSetId, validRuleSetIds]);
 
     useEffect(() => {
         if (isMcpSetsLoading) return;
         if (validMcpSetIds.size === 0) {
-            if (selectedMcpSetId !== noneId) setSelectedMcpSetId(noneId);
+            setSelectedMcpSetId(prev => prev !== noneId ? noneId : prev);
             return;
         }
 
         if (!validMcpSetIds.has(selectedMcpSetId)) {
-            setSelectedMcpSetId(noneId);
+            setSelectedMcpSetId(prev => prev !== noneId ? noneId : prev);
         }
     }, [isMcpSetsLoading, noneId, selectedMcpSetId, validMcpSetIds]);
 

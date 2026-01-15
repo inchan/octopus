@@ -8,7 +8,7 @@ import {
     CreateToolSetParams, UpdateToolSetParams,
     CreateProjectParams, UpdateProjectParams,
     SetToolConfigParams,
-    Rule, McpSet, SettingsSchema, RuleSet
+    McpSet, SettingsSchema, RuleSet
 } from '../shared/types'
 import { IElectronAPI } from '../shared/api'
 

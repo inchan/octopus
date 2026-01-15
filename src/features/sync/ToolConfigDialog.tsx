@@ -57,7 +57,7 @@ export const ToolConfigDialog: React.FC<ToolConfigDialogProps> = ({ isOpen, onCl
     const handleApply = async () => {
         if (generatedFiles.length === 0) return;
 
-        let basePath = targetDir;
+        const basePath = targetDir;
         if (scope === 'Global') {
             // For global, generateConfig likely returns absolute paths (if starting with ~).
             // But we need to handle ~ expansion? 

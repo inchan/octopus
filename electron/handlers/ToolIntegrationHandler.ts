@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron';
 import { ToolIntegrationService } from '../services/tool-integration/ToolIntegrationService';
-import { ConfigScope, ToolType } from '../services/tool-integration/types';
+import { ConfigScope } from '../services/tool-integration/types';
 import { Rule, McpSet, McpServer, RuleSet } from '../../shared/types';
 import { McpSetService } from '../services/sets/McpSetService';
 import { RulesService } from '../services/rules/RulesService';
@@ -32,7 +32,7 @@ export class ToolIntegrationHandler {
                     }
                 }
 
-                let rules: Rule[] = [];
+                const rules: Rule[] = [];
                 if (data.ruleSet) {
                     const ruleIds = data.ruleSet.items || [];
                     for (const id of ruleIds) {

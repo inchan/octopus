@@ -47,17 +47,18 @@ export function RuleDialog({
     const [content, setContent] = useState('');
     const [isActive, setIsActive] = useState(true);
 
+    // Synchronize local state with initialData when dialog opens
     useEffect(() => {
-        if (open) {
-            if (mode === 'edit' && initialData) {
-                setName(initialData.name);
-                setContent(initialData.content);
-                setIsActive(initialData.isActive);
-            } else {
-                setName('');
-                setContent('');
-                setIsActive(true);
-            }
+        if (!open) return;
+
+        if (mode === 'edit' && initialData) {
+            setName(initialData.name);
+            setContent(initialData.content);
+            setIsActive(initialData.isActive);
+        } else {
+            setName('');
+            setContent('');
+            setIsActive(true);
         }
     }, [open, mode, initialData]);
 

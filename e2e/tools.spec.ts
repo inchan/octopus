@@ -283,7 +283,7 @@ test.describe('Tools Feature', () => {
         });
 
         test('TC-TOOLS-E019: should handle save error and retry', async ({ page }) => {
-            let attemptCount = 0;
+            const attemptCount = 0;
 
             await page.addInitScript(() => {
                 if (window.api?.tools?.saveToolConfig) {
@@ -403,7 +403,7 @@ test.describe('Tools Feature', () => {
         });
 
         test('TC-TOOLS-E023: should create sync files after configuration', async ({ page, setupMockApi }) => {
-            let syncFileCreated = false;
+            const syncFileCreated = false;
 
             await page.addInitScript(() => {
                 if (window.api?.sync?.generateFiles) {
@@ -662,7 +662,7 @@ test.describe('Tools Feature', () => {
 
     test.describe('Integration with Other Features', () => {
         test('TC-TOOLS-E041: should trigger filesystem sync after configuration', async ({ page, setupMockApi }) => {
-            let syncCalled = false;
+            const syncCalled = false;
 
             await page.addInitScript(() => {
                 if (window.api?.sync?.generateFiles) {

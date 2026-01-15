@@ -30,7 +30,7 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
 
     // Heuristic: If it looks like "some-key": { ... }, and not wrapped in {}, wrap it.
     try {
-        let parsed: any;
+        let parsed: Record<string, unknown>;
         try {
             parsed = JSON.parse(cleaned);
         } catch (e) {
@@ -41,7 +41,7 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
                 try {
                     const wrapped = `{${cleaned}}`;
                     parsed = JSON.parse(wrapped);
-                } catch (e2) {
+                } catch (_e2) {
                     throw e;
                 }
             } else {
@@ -57,10 +57,11 @@ export function parseSingleServerConfig(input: string): ParseSingleResult {
 
         // Logic to extract the "best" server config from the object
         // 1. If it has mcpServers key, look inside.
-        if (parsed.mcpServers) {
-            const keys = Object.keys(parsed.mcpServers);
+        if (parsed.mcpServers && typeof parsed.mcpServers === 'object') {
+            const mcpServers = parsed.mcpServers as Record<string, any>;
+            const keys = Object.keys(mcpServers);
             if (keys.length > 0) {
-                target = parsed.mcpServers[keys[0]];
+                target = mcpServers[keys[0]];
                 if (!target.name) {
                     target.name = keys[0];
                 }
@@ -132,7 +133,7 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
                         }
                     }
                 });
-            } catch (e) {
+            } catch (_e) {
                 // ignore
             }
         }
@@ -143,7 +144,7 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
     // We look for objects that contain "command"
     // Heuristic: "command"\s*:\s*"..."
     const commandRegex = /"?command"?\s*:\s*"([^"]+)"/g;
-    while ((match = commandRegex.exec(text)) !== null) {
+    while (commandRegex.exec(text) !== null) {
         // Found a command. Let's try to find the surrounding object.
         // This is hard without a parser.
         // Let's rely on `relaxJson` on reasonably sized chunks around the match? 
@@ -179,7 +180,7 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
             // Maybe it contains mcpServers key?
             try {
                 const relaxed = relaxJson(code);
-                const parsed = JSON.parse(relaxed);
+                const parsed = JSON.parse(relaxed) as Record<string, any>;
                 if (parsed.mcpServers) {
                     Object.entries(parsed.mcpServers).forEach(([key, val]: [string, any]) => {
                         if (val && typeof val === 'object' && val.command) {
@@ -198,7 +199,9 @@ export function extractServersFromText(text: string): CreateMcpServerParams[] {
                         }
                     });
                 }
-            } catch (e) { }
+            } catch (_e) {
+                // Ignore parsing errors for individual blocks
+            }
         }
     }
 

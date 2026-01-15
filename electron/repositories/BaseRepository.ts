@@ -43,7 +43,7 @@ export abstract class BaseRepository<T> {
         }
     }
 
-    protected safeJsonStringify(data: any): string {
+    protected safeJsonStringify(data: unknown): string {
         return JSON.stringify(data);
     }
 }

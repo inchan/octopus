@@ -20,7 +20,9 @@ describe('cn (tailwind-merge utility)', () => {
     });
 
     it('should handle conditional classes', () => {
-        const result = cn('base-class', true && 'conditional-class', false && 'not-included');
+        const isTrue = true;
+        const isFalse = false;
+        const result = cn('base-class', isTrue && 'conditional-class', isFalse && 'not-included');
         expect(result).toContain('base-class');
         expect(result).toContain('conditional-class');
         expect(result).not.toContain('not-included');

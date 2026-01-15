@@ -54,6 +54,6 @@ export class MigrationService {
     }
 
     private getAppliedMigrations(): { id: number; name: string }[] {
-        return this.db.prepare('SELECT id, name FROM _migrations').all() as any;
+        return this.db.prepare('SELECT id, name FROM _migrations').all() as { id: number; name: string }[];
     }
 }
