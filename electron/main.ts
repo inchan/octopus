@@ -9,9 +9,8 @@ log.transports.file.level = 'info';
 autoUpdater.logger = log;
 
 function setupAutoUpdater(win: BrowserWindow) {
-    if (process.platform === 'darwin') {
-        autoUpdater.autoDownload = false;
-    }
+    // ZIP 파일 사용으로 macOS도 자동 다운로드 가능
+    // autoDownload는 기본값 true 사용 (ZIP은 인플레이스 업데이트 지원)
 
     autoUpdater.on('checking-for-update', () => {
         log.info('Checking for update...');

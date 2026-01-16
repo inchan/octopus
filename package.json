@@ -29,10 +29,12 @@
       "icon": "build/icons/icon.icns",
       "artifactName": "${productName}_${version}_${arch}.${ext}",
       "target": [
-        "dmg",
         "zip"
       ],
       "identity": "-",
+      "hardenedRuntime": true,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
       "gatekeeperAssess": false,
       "category": "public.app-category.developer-tools"
     },
